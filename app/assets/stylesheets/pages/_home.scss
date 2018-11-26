@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+
+body, html {
+    height: 100%;
+}
+
+.bg{
+  background-image: image-url("home-house.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#form-placeholder{
+  width: 60vh;
+  margin-top: 20%
+}
