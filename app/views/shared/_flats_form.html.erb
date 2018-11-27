@@ -1,12 +1,48 @@
-<%= simple_form_for @flat do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :price_per_night %>
-<%= f.input :number_of_guests%>
-<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
-<%= f.input :address %>
-<%= f.input :address %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+
+      <%= simple_form_for @flat do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price_per_night %>
+      <%= f.input :number_of_guests%>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+      <%= f.input :address %>
+      <div id=image-fields>
+        <div id=image-field>
+          <%= f.simple_fields_for :pictures do |p| %>
+          <%= p.input :picture %>
+          <%= p.input :picture_cache, as: :hidden %>
+          <% end %>
+        </div>
+      </div>
 
 
-<%= f.submit "Add a flat", class: "btn btn-primary" %>
-<% end %>
+
+      <%= f.submit "Add a flat", class: "btn btn-primary" %>
+      <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+const imageFields = document.getElementById("image-fields");
+const imageField = document.getElementById('image-field');
+function addPictureLine() {
+  imageFields.innerHTML += imageField.innerHTML;
+}
+
+const morePicturesButton = document.getElementById('more-pictures-button')
+
+morePicturesButton.addEventListener('click', (event) => {
+  addPictureLine();
+});
+
+
+-->

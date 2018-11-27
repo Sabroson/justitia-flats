@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_111711) do
   create_table "pictures", force: :cascade do |t|
     t.bigint "flat_id"
     t.string "url"
-    t.boolean "is_primary"
+    t.boolean "is_primary", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flat_id"], name: "index_pictures_on_flat_id"
