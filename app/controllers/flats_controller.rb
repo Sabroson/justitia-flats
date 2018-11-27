@@ -20,6 +20,7 @@ class FlatsController < ApplicationController
         end
         set_primary_picture
       end
+
       redirect_to root_path
     else
       render :new
