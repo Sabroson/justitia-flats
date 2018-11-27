@@ -1,4 +1,4 @@
-<div class="container">
+<div class="justitita-box">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
 
@@ -9,17 +9,15 @@
       <%= f.input :number_of_guests%>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
       <%= f.input :address %>
+
+      <%= f.simple_fields_for :pictures do |p| %>
       <div id=image-fields>
         <div id=image-field>
-          <%= f.simple_fields_for :pictures do |p| %>
-          <%= p.input :picture %>
+          <%= p.file_field :picture %>
           <%= p.input :picture_cache, as: :hidden %>
-          <% end %>
         </div>
       </div>
-
-
-
+      <% end %>
       <%= f.submit "Add a flat", class: "btn btn-primary" %>
       <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
 
@@ -31,18 +29,3 @@
 
 
 
-<!--
-const imageFields = document.getElementById("image-fields");
-const imageField = document.getElementById('image-field');
-function addPictureLine() {
-  imageFields.innerHTML += imageField.innerHTML;
-}
-
-const morePicturesButton = document.getElementById('more-pictures-button')
-
-morePicturesButton.addEventListener('click', (event) => {
-  addPictureLine();
-});
-
-
--->

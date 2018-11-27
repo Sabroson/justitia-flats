@@ -8,6 +8,7 @@ class FlatsController < ApplicationController
   end
 
   def create
+    @created_pictures = params["flat"]["pictures"]
     @flat = Flat.new(flat_params)
     if @flat.save
       redirect_to flat_path(@flat)
