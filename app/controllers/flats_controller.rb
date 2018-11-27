@@ -8,6 +8,7 @@ class FlatsController < ApplicationController
   end
 
   def create
+    raise
     @flat = Flat.new(flat_params)
     if @flat.save
       redirect_to flat_path(@flat)

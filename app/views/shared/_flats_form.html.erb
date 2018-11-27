@@ -10,12 +10,13 @@
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
       <%= f.input :address %>
       <div id=image-fields>
+        <%= f.simple_fields_for :pictures do |p| %>
         <div id=image-field>
-          <%= f.simple_fields_for :pictures do |p| %>
           <%= p.input :picture %>
           <%= p.input :picture_cache, as: :hidden %>
-          <% end %>
         </div>
+        <% end %>
+
       </div>
 
 
@@ -31,18 +32,3 @@
 
 
 
-<!--
-const imageFields = document.getElementById("image-fields");
-const imageField = document.getElementById('image-field');
-function addPictureLine() {
-  imageFields.innerHTML += imageField.innerHTML;
-}
-
-const morePicturesButton = document.getElementById('more-pictures-button')
-
-morePicturesButton.addEventListener('click', (event) => {
-  addPictureLine();
-});
-
-
--->
