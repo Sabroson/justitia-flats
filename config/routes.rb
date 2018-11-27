@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
   resources :flats, only: [:new, :create, :index]
+  
   namespace :host do
     resources :flats, only: [:index]
   end

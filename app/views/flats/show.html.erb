@@ -1,0 +1,78 @@
+<main class="show-page">
+  <div class="container">
+    <div class="row">
+
+      <div class="card col-xs-8 col-md-8">
+        <div class="limit">
+        <%= image_tag("living_room.jpg", :style => "width: 100%; height: 100%; margin-top: 15px ") %>
+        </div>
+      </div>
+
+      <div class="card col-xs-4 col-md-4">
+        <div class="airbnbplus-logo">
+        <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 130px; margin-top: 20px;") %>
+        </div>
+        <div>
+          <strong><small class="apartment-name"><%= @flat.name.upcase %></small></strong>
+        </div>
+        <div class="flat-description">
+          <p><%= @flat.description %></p>
+        </div>
+
+        <div class="flat-address">
+          <small>Adress: <%= @flat.address %></small>
+        </div>
+
+        <div class="flat-price">
+          <small>Price: <%= @flat.price_per_night %>€/night</small>
+        </div>
+        <div class="flat-space">
+          <small>Guests: <%= @flat.number_of_guests %></small>
+        </div>
+        <%= link_to "Book", "#", class: "btn btn-primary", style: "margin-top: 10px;" %>
+      </div>
+    </div>
+  </div>
+<!--
+      <div class="sticky-bar">
+        <div class="inner-sticky-bar">
+          <div style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0">
+            <div class="inner-elements">
+
+              <div class="padding-inner-element">
+                <div class="flat-name"><small class="style-flat-name"><%= @flat.name %></small>
+                </div>
+              </div>
+              <div class="seperator-elements">
+                <div class="set-seperator-color"></div>
+              </div>
+
+              <div class="element">
+                <div class="price-per-night-wrap">
+                  <span>
+                    <div class="price-per-night">
+                      <div class="price-per-night-inline">
+                        <span class="price">
+                          <span class="price-in-euro">€71</span>
+                        </span>
+                        <span class="per-night">
+                          <span class="style-per-night">/night</span>
+                        </span>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+              </div>
+
+              <div class="element">
+                <div style="margin-left:8px;">
+                TO DO: add button to sticky bar
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+ -->
+</main>
