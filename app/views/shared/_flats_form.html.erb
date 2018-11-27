@@ -11,15 +11,25 @@
       <%= f.input :address %>
 
       <%= f.simple_fields_for :pictures do |p| %>
-      <div id=image-fields>
-        <div id=image-field>
-          <%= p.file_field :picture %>
-          <%= p.input :picture_cache, as: :hidden %>
+        <div id=image-fields>
+
+          <div>
+            <label class='form-control-label' for='Picture'> Primary picture </label>
+            <%= p.file_field :picture %>
+            <%= p.input :picture_cache, as: :hidden %>
+          </div>
+          <div>
+            <label class='form-control-label' display=> Supporting pictures </label>
+            <div id="secondary-images">
+            </div>
+            <div>
+              <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
+            </div>
+          </div>
         </div>
-      </div>
       <% end %>
-      <%= f.submit "Add a flat", class: "btn btn-primary" %>
-      <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
+
+      <%= f.submit "Add a flat", class: "btn btn-lg btn-danger" %>
 
       <% end %>
 
