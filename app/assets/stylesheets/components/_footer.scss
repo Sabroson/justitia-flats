@@ -24,3 +24,17 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
+
+@media screen and (min-width: 800px) {
+  div.footer-copyright {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  div.footer-copyright {
+    font-size: 12px;
+  }
+}
+
