@@ -1,10 +1,15 @@
 class FlatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
   def index
     @flats = Flat.all
   end
 
   def new
     @flat = Flat.new
+  end
+
+  def show
+    @flat = Flat.find(params[:id])
   end
 
   def create
