@@ -1,7 +1,7 @@
 class Flat < ApplicationRecord
   belongs_to :user
-  has_many :pictures
-  has_many :bookings
+  has_many :pictures, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   validates :name, presence: true, length: { minimum: 6, too_short: "%{count} characters is the minimum allowed" }, allow_blank: false
   validates :name, presence: true, length: { maximum: 100, too_long: "%{count} characters is the maximum allowed" }
   validates :address, presence: true, allow_blank: false
