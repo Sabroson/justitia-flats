@@ -10,6 +10,8 @@
       <div class="message">
         <% if flat.primary_picture_url %>
         <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
+          <% else %>
+        <%= image_tag "https://vignette.wikia.nocookie.net/theislands/images/f/fd/House_placeholder.jpg/revision/latest?cb=20140101201028", class: "img-size" %>
         <% end %>
         <div class="message-body">
           <p><strong> <%= flat.name %> </strong></p>
