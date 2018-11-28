@@ -23,4 +23,10 @@ class Flat < ApplicationRecord
   def validate_coords
     raise CoordsError if latitude.nil? || longitude.nil?
   end
+  
+  def primary_picture_url
+    pic = pictures.where(is_primary: true).first.url
+    pic || false
+  end
+
 end

@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
 
-      <div class="card col-xs-8 col-md-8">
+      <div class="col-xs-8 col-md-8">
         <div class="limit">
         <%= image_tag("living_room.jpg", :style => "width: 100%; height: 100%; margin-top: 15px ") %>
         </div>
       </div>
 
-      <div class="card col-xs-4 col-md-4">
+      <div class="col-xs-4 col-md-4">
         <div class="airbnbplus-logo">
         <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 130px; margin-top: 20px;") %>
         </div>
@@ -32,7 +32,17 @@
         <%= link_to "Book", "#", class: "btn btn-primary", style: "margin-top: 10px;" %>
       </div>
     </div>
+
+    <div class=row>
+      <div class="col-xs-12" style="height: 50px;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" id="map" style="width: 100%; height: 600px;" data-marker="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
+
 <!--
       <div class="sticky-bar">
         <div class="inner-sticky-bar">
@@ -40,7 +50,7 @@
             <div class="inner-elements">
 
               <div class="padding-inner-element">
-                <div class="flat-name"><small class="style-flat-name"><%= @flat.name %></small>
+                <div class="flat-name"><small class="style-flat-name"><%#= @flat.name %></small>
                 </div>
               </div>
               <div class="seperator-elements">

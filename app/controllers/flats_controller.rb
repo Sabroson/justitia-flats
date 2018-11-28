@@ -10,6 +10,10 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @marker = {
+        lng: @flat.longitude,
+        lat: @flat.latitude
+      }
   end
 
   def create
@@ -47,7 +51,7 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :pictures)
+    params.require(:flat).permit(:name, :address, :latitude, :longitude, :description, :price_per_night, :number_of_guests, :pictures)
   end
 
   def set_flat
