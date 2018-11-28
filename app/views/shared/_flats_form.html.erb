@@ -8,7 +8,10 @@
       <%= f.input :price_per_night %>
       <%= f.input :number_of_guests%>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
-      <%= f.input :address %>
+      <%= f.input :address, id: 'flat_address' %>
+      <%= f.input :latitude, as: :hidden %>
+      <%= f.input :longitude, as: :hidden %>
+
 
       <%= f.simple_fields_for :pictures do |p| %>
         <div id=picture-fields>
