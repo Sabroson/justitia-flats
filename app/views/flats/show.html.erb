@@ -32,7 +32,17 @@
         <%= link_to "Book", "#", class: "btn btn-primary", style: "margin-top: 10px;" %>
       </div>
     </div>
+
+    <div class=row>
+      <div class="col-xs-12" style="height: 50px;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" id="map" style="width: 100%; height: 600px;" data-marker="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
+
 <!--
       <div class="sticky-bar">
         <div class="inner-sticky-bar">
@@ -40,7 +50,7 @@
             <div class="inner-elements">
 
               <div class="padding-inner-element">
-                <div class="flat-name"><small class="style-flat-name"><%= @flat.name %></small>
+                <div class="flat-name"><small class="style-flat-name"><%#= @flat.name %></small>
                 </div>
               </div>
               <div class="seperator-elements">

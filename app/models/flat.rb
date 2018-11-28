@@ -8,6 +8,8 @@ class Flat < ApplicationRecord
   validates :description, presence: true, length: { maximum: 200, too_long: "%{count} characters is the maximum allowed" }
   validates :price_per_night, presence: true, allow_nil: false, numericality: { only_integer: true, greater_than: 0 }
   validates :number_of_guests, presence: true, numericality: { only_integer: true, greater_than: 0 }, allow_nil: false
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   # validates :latitude, presence: true, allow_blank: false
   # validates :longitude, presence: true, allow_blank: false
 end
