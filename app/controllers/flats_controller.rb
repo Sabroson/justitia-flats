@@ -30,7 +30,7 @@ class FlatsController < ApplicationController
         set_primary_picture
       end
 
-      redirect_to root_path
+      redirect_to flat_path(@flat)
     else
       render :new
     end
