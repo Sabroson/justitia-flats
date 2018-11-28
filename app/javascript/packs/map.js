@@ -20,5 +20,4 @@ if (mapElement) {
   map.setCenter([marker.lng, marker.lat]);
 
   map.fitBounds(bounds, { duration: 0, padding: 75 })
-}
 

@@ -12,4 +12,9 @@ class Flat < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   # validates :latitude, presence: true, allow_blank: false
   # validates :longitude, presence: true, allow_blank: false
+
+  def primary_picture_url
+    pic = pictures.where(is_primary: true).first.url
+    pic || false
+  end
 end

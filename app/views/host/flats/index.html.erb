@@ -7,26 +7,21 @@
 
       <% @flats.each do |flat| %>
 
-        <div class="message">
-          <% if flat.pictures.where(is_primary: true) %>
-            <%= cl_image_tag flat.pictures.where(is_primary: true), class: "img-size" %>
-          <% end %>
-
-          <div class="message-body">
-            <p><strong> <%= flat.name %> </strong></p>
-            <p><%= flat.address %></p>
-          </div>
-
-          <div class="message-status">
-            <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn btn-outline-info" %>
-            <br>
-            <%= link_to "Manage your booking", bookings_path, class: "btn btn-outline-light" %>
-          </div>
-
+      <div class="message">
+        <% if flat.primary_picture_url %>
+        <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
+        <% end %>
+        <div class="message-body">
+          <p><strong> <%= flat.name %> </strong></p>
+          <p><%= flat.address %></p>
         </div>
-
-      <% end %>
-
+        <% end %>
+        <div class="message-status">
+          <%#= link_to "Edit", edit_flat_path(@flat), class: "btn btn btn-outline-info" %>
+          <br>
+          <%#= link_to "Manage your booking", bookings_path, class: "btn btn-outline-light" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
