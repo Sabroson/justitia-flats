@@ -1,4 +1,4 @@
-import 'mapbox-gl/dist/mapbox-gl.css'
+import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
 const mapElement = document.getElementById('map');
@@ -19,5 +19,5 @@ if (mapElement) {
 
   map.setCenter([marker.lng, marker.lat]);
 
-  map.fitBounds(bounds, { duration: 0, padding: 75 })
-
+  map.fitBounds(bounds, { duration: 0, padding: 75 });
+}
