@@ -1,5 +1,7 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :set_flat, only: [:show, :edit, :update, :destroy]
+
   def index
     @flats = Flat.all
   end
@@ -9,11 +11,10 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flat = Flat.find(params[:id])
     @marker = {
-        lng: @flat.longitude,
-        lat: @flat.latitude
-      }
+      lng: @flat.longitude,
+      lat: @flat.latitude
+    }
   end
 
   def create
@@ -34,6 +35,21 @@ class FlatsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @flat.update(flat_params)
+      redirect_to flat_path(@flat)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    Flat.destroy(@flat[:id])
   end
 
   private

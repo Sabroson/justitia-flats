@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Edit your flat</h2>
+
+  <%= simple_form_for( @flat, html: { class: "justitia-user-form justitita-box"}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price_per_night %>
+  <%= f.input :number_of_guests%>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+  <%= f.input :address, id: 'flat_address' %>
+  <%= f.input :latitude, as: :hidden %>
+  <%= f.input :longitude, as: :hidden %>
+</div>
+
+<div class="container">
+
+  <div id=picture-edit-container>
+    <button type="button" class="btn btn-warning delete-picture-btn">Delete picture Test</button>
+    <h2>Edit your pictures</h2>
+    <div class="justitia-user-form justitita-box">
+      <% @flat.pictures.each do |picture|%>
+      <%= cl_image_tag(picture.url, :style => "width: 50%; height: 50%; margin-top: 10px;") %>
+      <%= link_to '<button type="button" class="btn btn-warning delete-picture-btn">Delete picture</button>'.html_safe, picture_path(picture), method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container">
+  <h2>Confirm</h2>
+  <div class="justitia-user-form justitita-box">
+    <div class="form-actions">
+      <%= f.submit "Edit flat", class: "btn btn-lg btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
