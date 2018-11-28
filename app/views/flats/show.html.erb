@@ -4,13 +4,17 @@
 
       <div class="col-xs-8 col-md-8">
         <div class="limit">
-        <%= image_tag("living_room.jpg", :style => "width: 100%; height: 100%; margin-top: 15px ") %>
+          <% @flat.pictures.each do |picture| %>
+          <% if picture.is_primary %>
+        <%= cl_image_tag(picture.url , :style => "width: 100%; height: 100%; margin-top: 15px ") %>
+        <% end %>
+        <% end %>
         </div>
       </div>
 
       <div class="col-xs-4 col-md-4">
         <div class="airbnbplus-logo">
-        <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 130px; margin-top: 20px;") %>
+        <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 115px; margin-top: 20px;") %>
         </div>
         <div>
           <strong><small class="apartment-name"><%= @flat.name.upcase %></small></strong>
