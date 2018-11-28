@@ -1,21 +1,23 @@
-const addressInput = document.getElementById('flat_address');
+import 'mapbox-gl/dist/mapbox-gl.css'
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
-if (addressInput) {
-  const places = require('places.js');
-  const placesAutocomplete = places({
-    appId: 'plNC0Q4YQAAX',
-    apiKey: '25aedb7556dccc096bc177385878fe3f',
-    container: addressInput
+const mapElement = document.getElementById('map');
+
+if (mapElement) {
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10'
   });
-  placesAutocomplete.on('change', (event) => {
-    const coords = event.suggestion.latlng
-    setForm(coords)
-  });
-}
+  const marker = JSON.parse(mapElement.dataset.marker);
 
+  new mapboxgl.Marker()
+    .setLngLat([marker.lng, marker.lat])
+    .addTo(map);
 
-function setForm(coords) {
-  document.getElementById('flat_latitude').value = coords.lat
-  document.getElementById('flat_longitude').value = coords.lng
-}
+  map.setZoom(14);
+
+  map.setCenter([marker.lng, marker.lat]);
+
+  map.fitBounds(bounds, { duration: 0, padding: 75 })
 
