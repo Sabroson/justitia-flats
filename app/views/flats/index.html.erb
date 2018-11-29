@@ -1,48 +1,32 @@
+<%= render "shared/filter" %>
+
 <div class="flex-container">
-  <div class="row">
-    <div class="col-xs-7">
-      <div class="card-container">
-        <div class="row">
-          <% @flats.each do |flat| %>
-          <div class="col-xs-6">
-
-            <%= link_to flat_path(flat) do %>
-
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
-              <% if flat.primary_picture_url %>
-              <%= flat.primary_picture_url %>
-              <% else %>
-              <%= "https://a0.muscache.com/4ea/air/v2/pictures/5fc9f2c6-271a-45b5-bdc9-807edeefbd87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90" %>
-              <% end %>);">
-
-              <div class="card-description">
-                <h2> <%= flat.name %> </h2>
-                <p> <%= flat.description %> </p>
-              </div>
-
-              <div class="card-info">
-                  <p> <i class="fas fa-euro-sign"></i>  <%= flat.price_per_night %><i class="fas fa-user"></i>  <%= flat.number_of_guests %></p>
-              </div>
-            </div>
-
-          </div>
-        <% end %>
-      <% end %>
-      </div>
-    </div>
-    </div>
-
-    <div class="map-container">
-    <div class="col-xs-5">
-      <div id="map" style="height: 100vh !important; width: 463px !important; margin: auto;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-    </div>
-
+  <div class="card-container">
+    <% @flats.each do |flat| %>
     <div class="col-xs-6">
-       <div id="map" style="width: 150%; position: sticky !important; top: 15px; height: calc(100vh - 70px);" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-       </div>
-    </div>
+      <%= link_to flat_path(flat) do %>
 
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
+        <% if flat.primary_picture_url %>
+        <%= flat.primary_picture_url %>
+        <% else %>
+        <%= "https://a0.muscache.com/4ea/air/v2/pictures/5fc9f2c6-271a-45b5-bdc9-807edeefbd87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90" %>
+        <% end %>);">
+
+        <div class="card-description">
+          <h2> <%= flat.name %> </h2>
+          <p> <%= flat.description %> </p>
+        </div>
+
+        <div class="card-info">
+          <p> <i class="fas fa-euro-sign"></i>  <%= flat.price_per_night %><i class="fas fa-user"></i>  <%= flat.number_of_guests %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
   </div>
+
+    <div id="map" class="map-sticky" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 </div>

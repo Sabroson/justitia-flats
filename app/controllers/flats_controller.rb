@@ -2,7 +2,24 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   def index
     @flats = Flat.all
-    @flats_markers = Flat.where.not(latitude: nil, longitude: nil)
+    if params[:address].present?
+      sql_query = "address @@ :query"
+      @flats = @flats.where(sql_query, query: "%#{params[:address]}%")
+    end
+    if params[:min_price].present?
+      sql_query = "price_per_night > :query"
+      @flats = @flats.where(sql_query, query: "#{params[:min_price]}")
+    end
+    if params[:max_price].present?
+      sql_query = "price_per_night < :query"
+      @flats = @flats.where(sql_query, query: "#{params[:max_price]}")
+    end
+    if params[:guests].present?
+      sql_query = "number_of_guests >= :query"
+      @flats = @flats.where(sql_query, query: "#{params[:guests]}")
+    end
+    # build markers based on search
+    @flats_markers = @flats.where.not(latitude: nil, longitude: nil)
 
     @markers = @flats_markers.map do |flat|
       {

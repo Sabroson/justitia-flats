@@ -1,0 +1,33 @@
+.filter {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: white;
+  align-items: center;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  width: 100%;
+  // position: sticky;
+  // top: 70px;
+  // z-index: 1;
+  vertical-align: middle;
+
+}
+
+.input-form {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.005);
+  height: 50px;
+
+}
+
+.form-center {
+  width: 150px;
+  font-size: 12px;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
+
+#button-size {
+
+  font-size: 12px;
+  padding: 5px 15px;
+}
