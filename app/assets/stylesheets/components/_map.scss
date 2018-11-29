@@ -1,4 +1,8 @@
-.map-container {
-  position: sticky;
-  top: 70px;
+
+#map.map-sticky {
+  // position: fixed !important;
+  top: 0px;
+  height: auto;
+  position: sticky !important;
+  flex: 0 0 550px;
 }
