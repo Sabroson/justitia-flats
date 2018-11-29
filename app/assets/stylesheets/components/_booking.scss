@@ -1,0 +1,36 @@
+.booking-container {
+  margin: 0 10px 0 10px;
+}
+
+.booking-card {
+  flex-grow: 1;
+  height: 300px;
+  color: black;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),
+            0 2px 4px 0 rgba(0,0,0,0.08);
+}
+
+.booking-image {
+  position: relative;
+  height: 175px;
+  background-size: cover !important;
+  background-position: top;
+}
+
+#booking-date {
+  font-weight: normal;
+}
+
+.booking-info {
+  padding: 7px;
+}
+
+.booking-info small {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.booking-info p {
+  font-size: 12px;
+}
