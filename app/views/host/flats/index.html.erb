@@ -17,12 +17,23 @@
           <h3> <%= flat.name %> </h3>
           <p><%= flat.address %></p>
         </div>
+        <div class="status">
+          <p>Confirmed bookings: 5</p>
+
+        </div>
         <div class="message-status">
-          <%= link_to "Edit", "#", class: "btn btn-primary" %>
-          <%= link_to "Manage my booking", "#", class: "btn btn-success" %>
+          <%= link_to "Edit", "#", class: "btn-medium" %>
+          <%= link_to "Manage my booking", "#", class: "btn-medium" %>
           <%#= link_to "Edit", edit_flat_path(@flat), class: "btn btn btn-outline-info" %>
           <%#= link_to "Manage your booking", bookings_path, class: "btn btn-outline-light" %>
         </div>
+
+        <div class="container-notification">
+          <img class="notification" src="https://www.colorcombos.com/images/colors/FC7405.png">
+          <p id="number-notification">3</p>
+        </div>
+
+
       </div>
     </div>
         <% end %>
