@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Edit your flat details</h2>
+  <%= simple_form_for( @flat, html: { class: "justitia-user-form justitita-box"}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price_per_night %>
+  <%= f.input :number_of_guests%>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+  <%= f.input :address, id: 'flat_address' %>
+  <%= f.input :latitude, as: :hidden %>
+  <%= f.input :longitude, as: :hidden %>
+  <%= f.simple_fields_for :pictures do |p| %>
+  <div id=picture-fields>
+    <div>
+      <label class='form-control-label' for='Picture'> Add pictures </label>
+      <%= p.file_field :picture %>
+      <%= p.input :picture_cache, as: :hidden %>
+    </div>
+    <div class ='supporting-pictures' >
+      <div id="secondary-pictures">
+      </div>
+      <div class=flat-form-buttons>
+        <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
+        <div class="form-actions">
+          <%= f.submit "Submit changes", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<div class="container">
+  <h2>Edit your pictures</h2>
+  <div class="justitia-user-form justitita-box">
+    <div class="row">
+      <% if  @flat.pictures.first.nil? %>
+      OOOH NOOOOOHHHH! You do not have any pictures yet! Please add some pictures above, my love.
+      <%end %>
+      <% @flat.pictures.each do |picture|%>
+      <div class="col-xs-4">
+        <div data-picture-id=<%= picture.id %> class="edit-image-container">
+          <%= cl_image_tag(picture.url,
+          width: 400, height: 300, crop: :fill) %>
+          <% if picture.is_primary? %>
+          <span class="badge top-right-badge">Primary</span>
+          <%end %>
+        </div>
+        <div class="edit-picture-footer" data-picture-id=<%= picture.id %>>
+          <%= link_to picture_path(picture), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash-alt delete-image black-text">Delete image</i>
+          <% end %>
+          <% if !picture.is_primary? %>
+          <%= link_to make_primary_path(picture), method: :patch, remote: true, data: { confirm: "Are you sure?" }  do %>
+          <i class="fas fa-edit main-image black-text">Change to primary</i>
+          <% end %>
+          <%end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

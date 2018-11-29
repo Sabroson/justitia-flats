@@ -4,4 +4,8 @@ class Picture < ApplicationRecord
   # validates :is_primary, presence: true, inclusion: { in: [true, false] }, allow_nil: false, allow_blank: false
 
   mount_uploader :url, PhotoUploader
+
+  def is_primary?
+    self.is_primary
+  end
 end

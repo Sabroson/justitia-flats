@@ -1,5 +1,5 @@
 const addressInput = document.getElementById('flat_address');
- if (addressInput) {
+if (addressInput) {
   const places = require('places.js');
   const placesAutocomplete = places({
     appId: 'plNC0Q4YQAAX',
@@ -11,7 +11,7 @@ const addressInput = document.getElementById('flat_address');
     setForm(coords)
   });
 }
- function setForm(coords) {
+function setForm(coords) {
   document.getElementById('flat_latitude').value = coords.lat
   document.getElementById('flat_longitude').value = coords.lng
 }
