@@ -19,10 +19,10 @@
     <div class ='supporting-pictures' >
       <div id="secondary-pictures">
       </div>
-      <div>
+      <div class=flat-form-buttons>
         <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
         <div class="form-actions">
-          <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+          <%= f.submit "Submit changes", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
@@ -32,12 +32,13 @@
 </div>
 
 
-
-
 <div class="container">
   <h2>Edit your pictures</h2>
   <div class="justitia-user-form justitita-box">
     <div class="row">
+      <% if  @flat.pictures.first.nil? %>
+      OOOH NOOOOOHHHH! You do not have any pictures yet! Please add some pictures above, my love.
+      <%end %>
       <% @flat.pictures.each do |picture|%>
       <div class="col-xs-4">
         <div data-picture-id=<%= picture.id %> class="edit-image-container">
