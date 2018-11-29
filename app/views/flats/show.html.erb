@@ -14,7 +14,7 @@
 
       <div class="col-xs-4 col-md-4">
         <div class="airbnbplus-logo">
-        <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 115px; margin-top: 20px;") %>
+        <%= image_tag("airbnbplus.png", :style => "height: 85px; margin-left: 85px; margin-top: 20px;") %>
         </div>
         <div>
           <strong><small class="apartment-name"><%= @flat.name.upcase %></small></strong>
@@ -22,17 +22,19 @@
         <div class="flat-description">
           <p><%= @flat.description %></p>
         </div>
-
+        <br>
         <div class="flat-address">
-          <small>Adress: <%= @flat.address %></small>
+          <small><strong>Address:</strong><br><%= @flat.address %></small>
+        </div>
+        <br>
+        <div class="flat-price">
+          <small><strong>Price: </strong><%= @flat.price_per_night %>€/night</small>
+        </div>
+        <br>
+        <div class="flat-space">
+          <small><strong>Guests: </strong><%= @flat.number_of_guests %> persons</small>
         </div>
 
-        <div class="flat-price">
-          <small>Price: <%= @flat.price_per_night %>€/night</small>
-        </div>
-        <div class="flat-space">
-          <small>Guests: <%= @flat.number_of_guests %></small>
-        </div>
         <div class="show-buttons">
           <%= link_to "Book", "#", class: "btn btn-pink", style: "margin-top: 10px;" %>
          <button class="btn btn-success btn-green" data-toggle="modal" data-target=".bs-example-modal-lg">More Pics</button>
@@ -46,7 +48,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12" id="map" style="width: 100%; height: 600px;" data-marker="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="col-xs-12" id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
     <div class="row">
