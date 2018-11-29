@@ -64,4 +64,3 @@ User.destroy_all
   alicante.latitude = 38.3537
   alicante.longitude = -0.490185
   alicante.save
-

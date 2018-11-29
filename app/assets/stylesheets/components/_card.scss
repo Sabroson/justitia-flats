@@ -1,6 +1,7 @@
 .card-container {
  margin: 0px 10px 10px 10px;
  flex-grow: 1;
+ overflow: scroll;
 }
 
 .card {
@@ -10,7 +11,7 @@
   background-position: center;
   color: white;
   position: relative;
-  margin: 10px -17px 2px 0px;
+  margin: 35px 10px 10px 10px;
 }
 
 .card-info {
