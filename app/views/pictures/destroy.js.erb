@@ -1,1 +1,3 @@
-document.querySelector("[data-picture-id='<%= @picture.id %>']").remove();
+document.querySelectorAll("[data-picture-id='<%= @picture.id %>']").forEach((div) => {
+  div.remove();
+});
