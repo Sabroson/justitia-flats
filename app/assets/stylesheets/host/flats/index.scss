@@ -21,7 +21,7 @@
 
 #number-notification {
   position: absolute;
-  bottom: 35px;
+  bottom: 50px;
   left: 15px;
   color: white;
 }
@@ -106,20 +106,4 @@
 .img-size {
   width: 120px;
 }
-
-.btn-medium {
-  color: #009677;
-  border: 1.5px solid #009677;
-  padding: 10px 15px;
-  border-radius: 50px;
-  opacity: 0.6;
-  margin: 15px;
-}
-.btn-medium:hover {
-  opacity: 1;
-  text-decoration: none;
-  color: #999999;
-  color: #009677;
-}
-
 
