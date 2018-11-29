@@ -38,5 +38,11 @@
       </div>
     </div>
     </div>
+
+    <div class="col-xs-6">
+       <div id="map" style="width: 150%; position: sticky !important; top: 15px; height: calc(100vh - 70px);" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+       </div>
+    </div>
+
   </div>
 </div>

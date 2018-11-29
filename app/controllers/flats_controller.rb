@@ -37,7 +37,7 @@ class FlatsController < ApplicationController
         end
         set_primary_picture
       end
-
+      user_as_host!(@flat.user)
       redirect_to flat_path(@flat)
     else
       render :new
@@ -46,7 +46,12 @@ class FlatsController < ApplicationController
 
   private
 
-  def create_picture(key, value)
+  def user_as_host!(user)
+    user.is_host = true
+    user.save
+  end
+
+  def create_picture(_key, value)
     picture = Picture.new(url: value)
     picture.flat = @flat
     picture.save

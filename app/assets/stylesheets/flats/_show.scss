@@ -131,9 +131,24 @@ div {
   border-radius: 5px !important;
   background-color: rgb(246, 88, 91) !important;
   color: white !important;
+  margin-right: 5px;
+
 }
 
 .btn-pink:hover {
     color: white !important;
     background-color: rgba(246, 88, 91, 0.8) !important;
 }
+
+.btn-green {
+  border-radius: 5px !important;
+}
+
+
+.show-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin: 5px 0;
+}
+
