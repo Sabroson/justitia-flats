@@ -22,6 +22,7 @@ class FlatsController < ApplicationController
             lng: @flat.longitude,
             lat: @flat.latitude
           }]
+    @booking = Booking.new
   end
 
   def create
