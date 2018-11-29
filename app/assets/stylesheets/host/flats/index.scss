@@ -2,14 +2,56 @@
   display: flex;
   align-items: center;
   padding: 20px;
+  margin: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  background-color: white;
 }
 .message:last-child {
   border-bottom: none;
 }
 .message-body {
   flex-grow: 1;
+  text-align: center;
+  width: 200px;
+  h3 {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+  }
 }
+
+#number-notification {
+  position: absolute;
+  bottom: 35px;
+  left: 15px;
+  color: white;
+}
+
+.container-notification {
+  position: relative;
+}
+
+.notification {
+  position: absolute;
+  left: 5px;
+  bottom: 45px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.message-status {
+  flex-grow: 1;
+}
+
+.status {
+  text-align: center;
+  font-weight: bold;
+  color: #009677;
+  font-size: 14px;
+  margin: 20px;
+  flex-grow: 1;
+
+}
+
 .message-name {
   padding-left: 10px;
   min-width: 100px;
@@ -18,6 +60,7 @@
   font-size: 13px;
   margin-bottom: 0px;
 }
+
 .message-name p {
   font-size: 13px;
   font-weight: lighter;
@@ -28,6 +71,12 @@
   padding-left: 10px;
   font-size: 13px;
   color: rgba(0,0,0,0.7);
+  p {
+    font-size: 14px;
+  }
+  h3 {
+    font-size: 20px;
+  }
 }
 .message-body {
   padding-left: 20px;
@@ -55,5 +104,22 @@
 }
 
 .img-size {
-  width: 80px;
+  width: 120px;
 }
+
+.btn-medium {
+  color: #009677;
+  border: 1.5px solid #009677;
+  padding: 10px 15px;
+  border-radius: 50px;
+  opacity: 0.6;
+  margin: 15px;
+}
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+  color: #009677;
+}
+
+

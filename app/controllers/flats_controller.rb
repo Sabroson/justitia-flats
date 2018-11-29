@@ -4,6 +4,14 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    @flats_markers = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @flats_markers.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude
+      }
+    end
   end
 
   def new
@@ -11,10 +19,11 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @marker = {
-      lng: @flat.longitude,
-      lat: @flat.latitude
-    }
+    @flat = Flat.find(params[:id])
+    @markers = [{
+            lng: @flat.longitude,
+            lat: @flat.latitude
+          }]
   end
 
   def create
@@ -30,7 +39,7 @@ class FlatsController < ApplicationController
         end
         set_primary_picture
       end
-
+      user_as_host!(@flat.user)
       redirect_to flat_path(@flat)
     else
       render :new
@@ -60,7 +69,12 @@ class FlatsController < ApplicationController
 
   private
 
-  def create_picture(key, value)
+  def user_as_host!(user)
+    user.is_host = true
+    user.save
+  end
+
+  def create_picture(_key, value)
     picture = Picture.new(url: value)
     picture.flat = @flat
     picture.save
