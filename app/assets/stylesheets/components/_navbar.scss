@@ -94,3 +94,12 @@
   color: #616668;
   font-size: 14px;
 }
+
+.navbar-welcome-message-small {
+  transition: color 0.3s ease;
+  font-weight: strong !important;
+  color: black !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 10px 20px;
+}

@@ -1,0 +1,42 @@
+<div class="container">
+
+  <h2>Create your flat</h2>
+
+  <%= simple_form_for( @flat, html: { class: "justitia-user-form justitita-box"}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price_per_night %>
+  <%= f.input :number_of_guests%>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+  <%= f.input :address, id: 'flat_address' %>
+  <%= f.input :latitude, as: :hidden %>
+  <%= f.input :longitude, as: :hidden %>
+
+
+  <%= f.simple_fields_for :pictures do |p| %>
+  <div id=picture-fields>
+
+    <div>
+      <label class='form-control-label' for='Picture'> Primary picture </label>
+      <%= p.file_field :picture %>
+      <%= p.input :picture_cache, as: :hidden %>
+    </div>
+    <div class ='supporting-pictures' >
+      <label class='form-control-label' style="display: none;" id='supporting-picture-label'> Supporting pictures </label>
+      <div id="secondary-pictures">
+      </div>
+      <div class = flat-form-buttons>
+        <button type="button" class="btn-medium" id="more-pictures-button">Add more pictures</button>
+        <div class="form-actions">
+          <%= f.submit "Add your flat", class: "btn-medium red" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+
+</div>
+
+
+

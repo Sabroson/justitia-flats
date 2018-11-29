@@ -51,6 +51,7 @@
       <div class="col-xs-12" id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
+    <!-- Modal with carousel -->
     <div class="row">
 
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -86,49 +87,24 @@
       </div>
     </div>
 
+
+    <!-- Modal with Booking Form -->
+    <div class="row">
+      <%= simple_form_for( [@flat, @booking], html: { class: "justitia-user-form justitita-box"}) do |f| %>
+       <%= f.input :start_date, as: :date, start_year: Date.today.year,
+                              end_year: Date.today.year + 1, start_day: Date.today.year,
+                              end_date: Date.today.day + 90,
+                              order: [:day, :month, :year] %>
+      <%= f.input :end_date, as: :date, start_year: Date.today.year,
+                          end_year: Date.today.year + 1, start_day: Date.today.year,
+                          end_date: Date.today.day + 90,
+                          order: [:day, :month, :year] %>
+      <div class="form-actions">
+        <%= f.submit "Request Booking", class: "btn btn-lg btn-danger" %>
+      </div>
+      <% end %>
+    </div>
+
     </div>
   </div>
-
-<!--
-      <div class="sticky-bar">
-        <div class="inner-sticky-bar">
-          <div style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0">
-            <div class="inner-elements">
-
-              <div class="padding-inner-element">
-                <div class="flat-name"><small class="style-flat-name"><%#= @flat.name %></small>
-                </div>
-              </div>
-              <div class="seperator-elements">
-                <div class="set-seperator-color"></div>
-              </div>
-
-              <div class="element">
-                <div class="price-per-night-wrap">
-                  <span>
-                    <div class="price-per-night">
-                      <div class="price-per-night-inline">
-                        <span class="price">
-                          <span class="price-in-euro">€71</span>
-                        </span>
-                        <span class="per-night">
-                          <span class="style-per-night">/night</span>
-                        </span>
-                      </div>
-                    </div>
-                  </span>
-                </div>
-              </div>
-
-              <div class="element">
-                <div style="margin-left:8px;">
-                TO DO: add button to sticky bar
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
- -->
 </main>
