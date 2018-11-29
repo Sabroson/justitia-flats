@@ -1,5 +1,7 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :set_flat, only: [:show, :edit, :update, :destroy]
+
   def index
     @flats = Flat.all
     @flats_markers = Flat.where.not(latitude: nil, longitude: nil)
@@ -43,6 +45,27 @@ class FlatsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @created_pictures = params["flat"]["pictures"]
+    if @flat.update(flat_params)
+      @created_pictures.each do |key, value|
+        unless key.include? "cache"
+          create_picture(key, value)
+        end
+      end
+      redirect_to flat_path(@flat)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    Flat.destroy(@flat[:id])
   end
 
   private
