@@ -1,7 +1,34 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/boockings/index.html.erb</p>
-<ul>
-<% @bookings.each do |booking| %>
-  <li><%= booking.id %></li>
-<% end %>
-</ul>
+<div class="booking-container">
+  <div class="row">
+    <div class="col-xs-12">
+    <h1 class="text-center">My bookings</h1>
+    </div>
+  </div>
+  <div class="row">
+    <% @bookings.each do |booking| %>
+      <div class="col-xs-3">
+        <div class="booking-card">
+          <div class="booking-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
+            <% if booking.primary_picture %>
+            <%= booking.primary_picture %>
+            <% else %>
+            <%= "https://a0.muscache.com/4ea/air/v2/pictures/5fc9f2c6-271a-45b5-bdc9-807edeefbd87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90" %>
+            <% end %>);">
+          </div>
+          <div class="booking-info">
+            <small id="booking-date">FROM <%= booking.start_date.strftime("%m/%d/%Y") %> TO <%= booking.end_date.strftime("%m/%d/%Y") %></small>
+            <br>
+            <small><%= booking.flat.name %></small>
+            <br>
+            <% if booking.status = "pending" || "rejected" %>
+            <p class="badge" style="background-color: red; color: white;"><%= booking.status.upcase %></p>
+            <% else %>
+            <p class="badge" style="background-color: #4CAE51; color: white;"><%= booking.status.upcase %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+     <% end %>
+   </div>
+  </div>
+</div>
