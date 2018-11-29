@@ -2,6 +2,14 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   def index
     @flats = Flat.all
+    @flats_markers = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @flats_markers.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude
+      }
+    end
   end
 
   def new
@@ -10,10 +18,10 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
-    @marker = {
-        lng: @flat.longitude,
-        lat: @flat.latitude
-      }
+    @markers = [{
+            lng: @flat.longitude,
+            lat: @flat.latitude
+          }]
   end
 
   def create
