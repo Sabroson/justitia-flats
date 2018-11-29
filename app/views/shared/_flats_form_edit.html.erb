@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <h2>Edit your flat</h2>
 
   <%= simple_form_for( @flat, html: { class: "justitia-user-form justitita-box"}) do |f| %>
@@ -10,19 +10,38 @@
   <%= f.input :address, id: 'flat_address' %>
   <%= f.input :latitude, as: :hidden %>
   <%= f.input :longitude, as: :hidden %>
-</div> -->
+  <%= f.simple_fields_for :pictures do |p| %>
+  <div id=picture-fields>
+
+    <div>
+      <label class='form-control-label' for='Picture'> Add pictures </label>
+      <%= p.file_field :picture %>
+      <%= p.input :picture_cache, as: :hidden %>
+    </div>
+    <div class ='supporting-pictures' >
+      <div id="secondary-pictures">
+      </div>
+      <div>
+        <button type="button" class="btn btn-success" id="more-pictures-button">Add more pictures</button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 <div class="container">
-  <div id=picture-edit-container>
-    <button type="button" class="btn btn-warning delete-picture-btn">Delete picture Test</button>
-    <h2>Edit your pictures</h2>
-    <div class="justitia-user-form justitita-box">
+  <h2>Edit your pictures</h2>
+  <div class="justitia-user-form justitita-box">
+    <div class="row">
       <% @flat.pictures.each do |picture|%>
-      <div data-picture-id=<%= picture.id %>>
-        <%= cl_image_tag(picture.url, :style => "width: 50%; height: 50%; margin-top: 10px;", :id => "picture_id_#{picture.id}") %>
-        <%= link_to picture_path(picture), :action => 'go', method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
-        <button type="button" class="btn btn-warning delete-picture-btn" id=<%= "delete_button_picture_id_#{picture.id}" %>>
-        Delete picture</button>
+      <div class="col-xs-4">
+        <div data-picture-id=<%= picture.id %> class="edit-image-container">
+          <%= cl_image_tag(picture.url,
+          width: 400, height: 300, crop: :fill) %>
+          <%= link_to picture_path(picture), :action => 'go', method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
+          <button type="button" class="btn btn-danger">
+          Delete picture</button>
+        </div>
         <% end %>
       </div>
       <% end %>
@@ -31,13 +50,13 @@
 </div>
 
 
-<!-- <div class="container">
+<div class="container">
   <h2>Confirm</h2>
   <div class="justitia-user-form justitita-box">
     <div class="form-actions">
-      <%= f.submit "Edit flat", class: "btn btn-lg btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
     </div>
     <% end %>
   </div>
-</div> -->
+</div>
 
