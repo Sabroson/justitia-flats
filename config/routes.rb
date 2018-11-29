@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   namespace :host do
     resources :flats, only: [:index]
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :bookings, only: [:create, :index]
+
+  patch 'bookings/approve', to: 'bookings#approve', as: :approve_booking
+  patch 'bookings/reject', to: 'bookings#reject', as: :reject_booking
 end
