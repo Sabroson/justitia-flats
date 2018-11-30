@@ -15,11 +15,11 @@
         </div>
         <div class="edit-picture-footer" data-picture-id=<%= picture.id %>>
           <%= link_to picture_path(picture), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
-          <i class="fas fa-trash-alt delete-image black-text">Delete image</i>
+          <i class="fas fa-trash-alt"></i><span class="delete-image black-text">Delete image</span>
           <% end %>
           <% if !picture.is_primary? %>
           <%= link_to make_primary_path(picture), method: :patch, remote: true, data: { confirm: "Are you sure?" }  do %>
-          <i class="fas fa-edit main-image black-text">Change to primary</i>
+          <i class="fas fa-edit"></i><span class="main-image black-text">Change to primary</span>
           <% end %>
           <%end %>
         </div>
