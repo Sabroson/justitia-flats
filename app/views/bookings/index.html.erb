@@ -1,9 +1,11 @@
 <div class="booking-container">
+
   <div class="row">
     <div class="col-xs-12">
     <h1 class="text-center">My bookings</h1>
     </div>
   </div>
+
   <div class="row">
     <% @bookings.each do |booking| %>
       <div class="col-xs-3">
@@ -16,19 +18,21 @@
             <% end %>);">
           </div>
           <div class="booking-info">
-            <small id="booking-date">FROM <%= booking.start_date.strftime("%m/%d/%Y") %> TO <%= booking.end_date.strftime("%m/%d/%Y") %></small>
-            <br>
-            <small><%= booking.flat.name %></small>
-            <br>
-            <% if booking.status = "pending" || "rejected" %>
-            <p class="badge" style="background-color: red; color: white;"><%= booking.status.upcase %></p>
+              <small id="booking-date">FROM <%= booking.start_date.strftime("%m/%d/%Y") %> TO <%= booking.end_date.strftime("%m/%d/%Y") %></small>
+              <br>
+              <small><%= booking.flat.name %></small>
+              <br>
+          </div>
+          <div class="booking-status">
+            <% if booking.status == "approved" %>
+              <span class="badge green-badge-confirmation"><%= booking.status.upcase %></span>
             <% else %>
-            <p class="badge" style="background-color: #4CAE51; color: white;"><%= booking.status.upcase %></p>
+              <span class="badge red-badge"><%= booking.status.upcase %></span>
             <% end %>
           </div>
         </div>
       </div>
-     <% end %>
-   </div>
+    <% end %>
   </div>
+
 </div>

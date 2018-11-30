@@ -5,6 +5,65 @@
   margin-bottom: 30px;
 }
 
+.homepage-search-box{
+  padding: 20px;
+  h4 {
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-top: 0px;
+  }
+
+  label {
+    font-size:12px
+  }
+
+  input {
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-width: 0.5px;
+    font-size:13px;
+  }
+
+  .price-search-home {
+    display:flex;
+    justify-content: space-between;
+    padding: 2px;
+
+    input {
+      width: 99%;
+    }
+  }
+
+  #address {
+    width:100%;
+  }
+
+  #guests {
+    width:100%;
+    font-size:13px ;
+  }
+
+  #max-price-label {
+    text-align: left
+  }
+
+  #home-search-button {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+    margin-bottom: -20px;
+    input{
+    margin-right: 0px;
+    }
+  }
+}
+
+
+#homepage-search-box-location {
+  display: flex;
+  align-items: center;
+}
 
 .justitia-user-form {
   padding: 50px;
@@ -71,7 +130,7 @@
 }
 
 .flat-form-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 

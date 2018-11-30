@@ -28,4 +28,12 @@ class Flat < ApplicationRecord
     pic = pictures.where(is_primary: true).first
     pic.nil? ? false : pic.url
   end
+
+  def count_approved_bookings
+    bookings.where(status: "approved").length
+  end
+
+  def count_pending_bookings
+    bookings.where(status: "pending").length
+  end
 end

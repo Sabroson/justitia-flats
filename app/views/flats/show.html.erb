@@ -36,7 +36,7 @@
         </div>
 
         <div class="show-buttons">
-         <button class="btn btn-pink" style="margin-top: 10px;" data-toggle="modal" data-target=".booking-form">Book</button>
+         <button class="btn-medium red" style="margin-top: 10px;" data-toggle="modal" data-target=".booking-form">Book</button>
          <button class="btn btn-success btn-green" data-toggle="modal" data-target=".bs-example-modal-lg">More Pics</button>
         </div>
 
@@ -102,12 +102,13 @@
                 <%= f.input :start_date, as: :string, :input_html => { :id => 'start_date' } %>
                 <%= f.input :end_date, as: :string, :input_html => { :id => 'end_date' } %>
                 <div class="form-group" style="margin-top: 10px;">
-                  <%= f.submit "Request Booking", class: "btn btn-lg btn-pink" %>
+                  <%= f.submit "Request Booking", class: "btn-medium red" %>
                 </div>
               <% end %>
             </div>
           </div>
         </div>
+
       </div>
 
     </div>

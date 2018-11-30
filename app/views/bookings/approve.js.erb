@@ -1,1 +1,7 @@
+const buttonsDivApproved = document.querySelector("[data-flat-id='<%= @booking.id %>']");
 
+const statusSpanApproved = document.querySelector("[data-flat-status-id='<%= @booking.id %>']");
+
+buttonsDivApproved.innerText = "";
+
+statusSpanApproved.innerText = "approved";
