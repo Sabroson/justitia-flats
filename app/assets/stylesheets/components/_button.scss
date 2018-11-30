@@ -4,7 +4,7 @@
   padding: 10px 15px;
   border-radius: 50px;
   opacity: 0.6;
-  margin: 15px;
+  margin: 15px auto 15px auto;
 }
 .btn-medium:hover {
   opacity: 1;
@@ -33,8 +33,8 @@
   border-radius: 5px !important;
   background-color: rgb(246, 88, 91) !important;
   color: white !important;
-  margin-right: 5px;
-
+  margin: 15px;
+  padding: 10px 15px;
 }
 
 .btn-pink:hover {
@@ -51,4 +51,20 @@
   justify-content: flex-start;
   align-items: baseline;
   margin: 5px 0;
+}
+
+.align-add-picture-button {
+  margin-left: -1px;
+}
+
+.align-submit-button {
+  margin-right: 0px;
+}
+
+#button-resize {
+  width: 60px;
+  height: 30px;
+  margin: auto 30px;
+  font-size: 14px;
+  padding: 0;
 }

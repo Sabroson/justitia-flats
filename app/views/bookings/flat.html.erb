@@ -1,51 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="booking-container">
 
-<div class="booking-container">
-    <% if current_user.is_host %>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2 text-center">
-    <h2>Your bookings for</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2 text-center">
-      <% flat = Flat.find(params[:flat_id]) %>
-      <h4><strong><%= flat.name %></strong></h4>
-    </div>
-  </div>
-  <div class="row">
-    <% @bookings.each do |booking| %>
-      <div class="col-xs-3">
-        <div class="booking-card">
-          <div class="booking-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
-            <% if booking.primary_picture %>
-            <%= booking.primary_picture %>
-            <% else %>
-            <%= "https://a0.muscache.com/4ea/air/v2/pictures/5fc9f2c6-271a-45b5-bdc9-807edeefbd87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90" %>
-            <% end %>);">
-          </div>
-          <div class="booking-info">
-            <small id="booking-date">FROM <%= booking.start_date.strftime("%m/%d/%Y") %> TO <%= booking.end_date.strftime("%m/%d/%Y") %></small>
-            <br>
-            <small>Status: <span data-flat-status-id="<%= booking.id %>"><%= booking.status %></span></small>
-          </div>
-            <div class="booking-status" data-flat-id="<%= booking.id %>">
-          <% if booking.status == "pending" %>
-            <div class="row badge-row">
-            <%= link_to reject_booking_path(booking), method: 'patch', remote: true do %>
-              <span class="badge red-badge">REJECT</span>
-            <% end %>
-            <%= link_to approve_booking_path(booking), method: 'patch', remote: true do %>
-              <span class="badge green-badge">CONFIRM</span>
-            <% end %>
+        <% if current_user.is_host %>
+          <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+              <h2>Your bookings</h2>
             </div>
-          <% end %>
           </div>
-        </div>
+
+          <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+              <% flat = Flat.find(params[:flat_id]) %>
+              <h4>Your flat  <i>"<%= flat.name %>"</i>  has <strong><%= flat.bookings.length %> bookings </strong> in total </h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <% @bookings.each do |booking| %>
+              <div class="col-xs-3">
+                <div class="booking-card">
+                    <div class="booking-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
+                        <% if booking.primary_picture %>
+                          <%= booking.primary_picture %>
+                        <% else %>
+                          <%= "https://a0.muscache.com/4ea/air/v2/pictures/5fc9f2c6-271a-45b5-bdc9-807edeefbd87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90" %>
+                        <% end %>);">
+                    </div>
+
+                    <div class="booking-info">
+                        <small id="booking-date">FROM <%= booking.start_date.strftime("%m/%d/%Y") %> TO <%= booking.end_date.strftime("%m/%d/%Y") %></small>
+                        <br>
+                        <small>Status: <span data-flat-status-id="<%= booking.id %>"><%= booking.status %></span></small>
+                    </div>
+
+                    <div class="booking-status" data-flat-id="<%= booking.id %>">
+                      <% if booking.status == "pending" %>
+                         <div class="confirm-buttons-row">
+                            <%= link_to 'Reject', reject_booking_path(booking), method: 'patch', remote: true, class: 'btn btn-sm btn-danger'%>
+                            <%= link_to 'Approve', approve_booking_path(booking), method: 'patch', remote: true, class: 'btn btn-sm btn-primary'%>
+                          </div>
+                      <% end %>
+                    </div>
+
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+        <% else %>
+          <h2 class="text-center"><%= "You do not have any pending booking confirmations." %></h2>
+        <% end %>
+
+
       </div>
-      <% end %>
-     <% else %>
-    <h2 class="text-center"><%= "You do not have any pending booking confirmations." %></h2>
-     <% end %>
-   </div>
+    </div>
   </div>
 </div>
+
