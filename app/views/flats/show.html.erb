@@ -36,7 +36,7 @@
         </div>
 
         <div class="show-buttons">
-          <%= link_to "Book", "#", class: "btn btn-pink", style: "margin-top: 10px;" %>
+         <button class="btn btn-pink" style="margin-top: 10px;" data-toggle="modal" data-target=".booking-form">Book</button>
          <button class="btn btn-success btn-green" data-toggle="modal" data-target=".bs-example-modal-lg">More Pics</button>
         </div>
 
@@ -90,19 +90,26 @@
 
     <!-- Modal with Booking Form -->
     <div class="row">
-      <%= simple_form_for( [@flat, @booking], html: { class: "justitia-user-form justitita-box"}) do |f| %>
-       <%= f.input :start_date, as: :date, start_year: Date.today.year,
-                              end_year: Date.today.year + 1, start_day: Date.today.year,
-                              end_date: Date.today.day + 90,
-                              order: [:day, :month, :year] %>
-      <%= f.input :end_date, as: :date, start_year: Date.today.year,
-                          end_year: Date.today.year + 1, start_day: Date.today.year,
-                          end_date: Date.today.day + 90,
-                          order: [:day, :month, :year] %>
-      <div class="form-actions">
-        <%= f.submit "Request Booking", class: "btn btn-lg btn-danger" %>
+
+      <div class="modal fade booking-form">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Request a booking for <%= @flat.name %></h3>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([@flat, @booking], :html => { class: 'form-inline' } ) do |f| %>
+                <%= f.input :start_date, as: :string, :input_html => { :id => 'start_date' } %>
+                <%= f.input :end_date, as: :string, :input_html => { :id => 'end_date' } %>
+                <div class="form-group" style="margin-top: 10px;">
+                  <%= f.submit "Request Booking", class: "btn btn-lg btn-pink" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <% end %>
+
     </div>
 
     </div>
