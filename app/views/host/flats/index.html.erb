@@ -1,5 +1,3 @@
-
-
 <div class="container message-container">
   <div class="row">
     <h1>Manage your Flats</h1>
@@ -7,7 +5,7 @@
     <% @flats.each do |flat| %>
 
     <div class="col-xs-12">
-      <div class="message justitia-user-form justitita-box">
+      <div class="message justitia-user-form justitita-box" data-flat-id="<%= flat.id %>">
         <% if flat.primary_picture_url %>
         <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
         <% else %>
@@ -22,11 +20,12 @@
           <p id="pending">Pending bookings: <%= flat.count_pending_bookings %></p>
 
         </div>
-        <div class="message-status">
+        <div class="message-status" >
           <%= link_to "Edit", edit_flat_path(flat), class: "btn-medium" %>
           <%= link_to "Manage my booking", bookings_for_flat_path(flat), class: "btn-medium" %>
           <%= link_to "Delete", flat_path(flat),
           method: :delete,
+          remote: true,
           data: { confirm: "Are you sure?" }, class: "btn-medium red"%>
         </div>
 
