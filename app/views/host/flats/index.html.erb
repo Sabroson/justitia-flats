@@ -18,20 +18,21 @@
           <p><%= flat.address %></p>
         </div>
         <div class="status">
-          <p>Confirmed bookings: 5</p>
+          <p id="approved">Confirmed bookings: <%= flat.count_approved_bookings %></p>
+          <p id="pending">Pending bookings: <%= flat.count_pending_bookings %></p>
 
         </div>
         <div class="message-status">
           <%= link_to "Edit", edit_flat_path(flat), class: "btn-medium" %>
-          <%= link_to "Manage my booking", "#", class: "btn-medium" %>
-          <%#= link_to "Manage your booking", bookings_path, class: "btn btn-outline-light" %>
+          <%= link_to "Manage my booking", bookings_for_flat_path(flat), class: "btn-medium" %>
         </div>
 
-        <div class="container-notification">
-          <img class="notification" src="https://www.colorcombos.com/images/colors/FC7405.png">
-          <p id="number-notification">3</p>
+        <div id="new-position">
+          <div id="notification-position">
+            <img id="notification-circle" src="https://www.colorcombos.com/images/colors/FC7405.png">
+            <p id="number-notification"> <%= flat.count_pending_bookings %> </p>
+          </div>
         </div>
-
 
       </div>
     </div>
