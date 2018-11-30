@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
       @booking.flat = Flat.find(params[:flat_id])
       @booking.user = current_user
       @booking.save
-      flash[:notice] = "Sweet, booking request submmitted :)"
+      flash[:notice] = "Sweet, booking request submitted :)"
       redirect_to bookings_path
     end
   end
