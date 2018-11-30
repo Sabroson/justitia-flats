@@ -1,16 +1,16 @@
 
 
-<div class="container">
+<div class="container message-container">
   <div class="row">
-      <h1>Manage your Flats</h1>
+    <h1>Manage your Flats</h1>
 
-      <% @flats.each do |flat| %>
+    <% @flats.each do |flat| %>
 
     <div class="col-xs-12">
       <div class="message justitia-user-form justitita-box">
         <% if flat.primary_picture_url %>
         <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
-          <% else %>
+        <% else %>
         <%= image_tag "https://vignette.wikia.nocookie.net/theislands/images/f/fd/House_placeholder.jpg/revision/latest?cb=20140101201028", class: "img-size" %>
         <% end %>
         <div class="message-body">
@@ -25,6 +25,9 @@
         <div class="message-status">
           <%= link_to "Edit", edit_flat_path(flat), class: "btn-medium" %>
           <%= link_to "Manage my booking", bookings_for_flat_path(flat), class: "btn-medium" %>
+          <%= link_to "Delete", flat_path(flat),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, class: "btn-medium red"%>
         </div>
 
         <div id="new-position">
@@ -36,7 +39,7 @@
 
       </div>
     </div>
-        <% end %>
+    <% end %>
   </div>
 </div>
 
