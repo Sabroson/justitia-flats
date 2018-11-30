@@ -10,4 +10,5 @@ class Booking < ApplicationRecord
     primary = flat.pictures.where(is_primary: true).first
     primary.nil? ? false : primary.url
   end
+
 end
