@@ -33,8 +33,7 @@
   border-radius: 5px !important;
   background-color: rgb(246, 88, 91) !important;
   color: white !important;
-  margin-right: 5px;
-
+  margin: 15px;
 }
 
 .btn-pink:hover {
@@ -51,4 +50,12 @@
   justify-content: flex-start;
   align-items: baseline;
   margin: 5px 0;
+}
+
+.align-add-picture-button {
+  margin-left: -1px;
+}
+
+.align-submit-button {
+  margin-right: 0px;
 }

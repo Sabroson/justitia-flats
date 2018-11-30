@@ -1,4 +1,3 @@
-<div class="container">
   <% if @flat.new_record? %>
   <h2>Create your flat</h2>
   <% else %>
@@ -27,13 +26,12 @@
       <div id="secondary-pictures">
       </div>
       <div class=flat-form-buttons>
-        <button type="button" class="btn-medium" id="more-pictures-button">Add more pictures</button>
+        <button type="button" class="btn-medium align-add-picture-button" id="more-pictures-button">Add more pictures</button>
         <div class="form-actions">
-          <%= f.submit "Submit", class: "btn-medium" %>
+          <%= f.submit "Submit", class: "btn-medium align-submit-button" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
+<% end %>
