@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
-          <%= link_to image_tag("form-placeholder.png", :alt => "form-placeholder", :id => 'form-placeholder'), flats_path %>
+          <%= form_tag flats_path, method: :get, class: "justitia-user-form justitita-box" do %>
+          <%= text_field_tag :address, params[:address], placeholder: "Location" %>
+          <%= text_field_tag :min_price, params[:min_price], placeholder: "min price" %>
+          <%= text_field_tag :max_price, params[:max_price], placeholder: "max price" %>
+          <%= text_field_tag :guests, params[:guests], placeholder: "Guests" %>
+          <%= submit_tag("filter", :id=>"button-size", :class=>"btn-medium", :name=>"submit") %>
+        <% end %>
       </div>
     </div>
   </div>
