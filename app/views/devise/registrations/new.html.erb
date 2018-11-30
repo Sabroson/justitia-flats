@@ -15,11 +15,10 @@
                   required: true,
                   autofocus: true ,
                   input_html: { autocomplete: "last_name" }%>
-      <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 38,
-                  end_year: Date.today.year - 18, order: [:day, :month, :year],
+      <%= f.input :date_of_birth, as: :string,
                   required: true,
                   autofocus: true ,
-                  input_html: { autocomplete: "date_of_birth" } %>
+                  input_html: { id: "date_of_birth" } %>
       <%= f.input :email,
                   required: true,
                   autofocus: true ,
