@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       session[:booking] = nil
 
       # redirect
-      flash[:notice] = "Sweet, booking request submmitted :)"
+      flash[:notice] = "Sweet, booking request submitted :)"
       bookings_path
 
     else
