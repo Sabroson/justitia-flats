@@ -1,47 +1,38 @@
+<div class="message-container">
 
-
-<div class="container message-container">
-  <div class="row">
-    <h1>Manage your Flats</h1>
-
-    <% @flats.each do |flat| %>
-
-    <div class="col-xs-12">
-      <div class="message justitia-user-form justitita-box" data-flat-id="<%= flat.id %>">
-        <% if flat.primary_picture_url %>
-        <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
-        <% else %>
-        <%= image_tag "https://vignette.wikia.nocookie.net/theislands/images/f/fd/House_placeholder.jpg/revision/latest?cb=20140101201028", class: "img-size" %>
-        <% end %>
-        <div class="message-body">
-          <h3> <%= flat.name %> </h3>
-          <p><%= flat.address %></p>
-        </div>
-        <div class="status">
-          <p id="approved">Confirmed bookings: <%= flat.count_approved_bookings %></p>
-          <p id="pending">Pending bookings: <%= flat.count_pending_bookings %></p>
-
-        </div>
-        <div class="message-status" >
-          <%= link_to "Edit", edit_flat_path(flat), class: "btn-medium" %>
-          <%= link_to "Manage my booking", bookings_for_flat_path(flat), class: "btn-medium" %>
-          <%= link_to "Delete", flat_path(flat),
-          method: :delete,
-          remote: true,
-          data: { confirm: "Are you sure?" }, class: "btn-medium red"%>
-        </div>
-
-        <div id="new-position">
-          <div id="notification-position">
-            <img id="notification-circle" src="https://www.colorcombos.com/images/colors/FC7405.png">
-            <p id="number-notification"> <%= flat.count_pending_bookings %> </p>
-          </div>
-        </div>
-
+  <h1>Manage your Flats</h1>
+  <% @flats.each do |flat| %>
+  <div class="message justitita-box" data-flat-id="<%= flat.id %>">
+    <div class="flat-description">
+      <% if flat.primary_picture_url %>
+      <%= cl_image_tag flat.primary_picture_url, class: "img-size" %>
+      <% else %>
+      <%= image_tag "https://vignette.wikia.nocookie.net/theislands/images/f/fd/House_placeholder.jpg/revision/latest?cb=20140101201028", class: "img-size" %>
+      <% end %>
+      <div class="message-body">
+        <h3> <%= flat.name %> </h3>
+        <p><%= flat.address %></p>
       </div>
     </div>
-    <% end %>
+    <div class="status">
+      <p id="approved">Confirmed bookings: <%= flat.count_approved_bookings %></p>
+      <p id="pending">Pending bookings: <%= flat.count_pending_bookings %></p>
+    </div>
+    <div class="actions">
+      <ul class="list-inline">
+        <li><%= link_to "Edit", edit_flat_path(flat), class: "btn-medium" %></li>
+        <li><%= link_to "Manage my booking", bookings_for_flat_path(flat), class: "btn-medium" %></li>
+        <li><%= link_to "Delete", flat_path(flat),
+        method: :delete,
+        remote: true,
+        data: { confirm: "Are you sure?" }, class: "btn-medium red"%></li>
+      </ul>
+    </div>
+    <div id="notification">
+      <img src="https://www.colorcombos.com/images/colors/FC7405.png">
+      <p> <%= flat.count_pending_bookings %> </p>
+    </div>
   </div>
+  <% end %>
+
 </div>
-
-
