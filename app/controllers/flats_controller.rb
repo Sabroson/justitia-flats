@@ -38,9 +38,9 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @markers = [{
-            lng: @flat.longitude,
-            lat: @flat.latitude
-          }]
+      lng: @flat.longitude,
+      lat: @flat.latitude
+    }]
     @booking = Booking.new
   end
 
@@ -83,6 +83,9 @@ class FlatsController < ApplicationController
 
   def destroy
     Flat.destroy(@flat[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
