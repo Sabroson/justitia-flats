@@ -1,1 +1,7 @@
+const buttonsDivReject = document.querySelector("[data-flat-id='<%= @booking.id %>']");
 
+const statusSpanReject = document.querySelector("[data-flat-status-id='<%= @booking.id %>']");
+
+buttonsDivReject.innerText = "";
+
+statusSpanReject.innerText = "rejected";

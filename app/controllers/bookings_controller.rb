@@ -26,14 +26,22 @@ class BookingsController < ApplicationController
 
   # lists bookings for a flat
   def flat
+    @flat = Flat.find(params[:flat_id])
+    @bookings = @flat.bookings
   end
 
   # approves a booking
   def approve
+    @booking = Booking.find(params[:id])
+    @booking.status = "approved"
+    @booking.save
   end
 
   # rejects a booking
   def reject
+    @booking = Booking.find(params[:id])
+    @booking.status = "rejected"
+    @booking.save
   end
 
   private
