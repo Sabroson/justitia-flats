@@ -1,8 +1,41 @@
 <div class="bg">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6">
-          <%= link_to image_tag("form-placeholder.png", :alt => "form-placeholder", :id => 'form-placeholder'), flats_path %>
+      <div class="col-xs-9 col-md-6 col-lg-4 col-xl-3">
+        <%= form_tag flats_path, method: :get, class: "justitita-box homepage-search-box"  do %>
+        <h4>Book unique homes</h4>
+        <div>
+          <%= label_tag 'Where' %>
+        </div>
+        <div>
+          <%= text_field_tag :address, params[:address], placeholder: "Amsterdam, Netherlands" %>
+        </div>
+        <div class="price-search-home">
+          <div>
+            <%= label_tag 'min price' %>
+          </div>
+          <div id="max-price-label">
+            <%= label_tag 'max price' %>
+          </div>
+        </div>
+        <div class="price-search-home">
+          <div>
+            <%= text_field_tag :min_price, params[:min_price], placeholder: "€0" %>
+          </div>
+          <div>
+            <%= text_field_tag :max_price, params[:max_price], placeholder: "€100" %>
+          </div>
+        </div>
+        <div>
+          <%= label_tag '# of guests' %>
+        </div>
+        <div>
+          <%= select_tag  :guests, options_for_select((1..15)), placeholder: "Guests" %>
+        </div>
+        <div id="home-search-button">
+          <%= submit_tag("Search", :id=>"button-size", :class=>"btn-medium", :name=>"submit") %>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
