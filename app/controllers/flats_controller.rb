@@ -83,6 +83,7 @@ class FlatsController < ApplicationController
 
   def destroy
     Flat.destroy(@flat[:id])
+    redirect_to host_flats_path
   end
 
   private

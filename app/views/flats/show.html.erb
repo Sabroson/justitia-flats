@@ -36,8 +36,8 @@
         </div>
 
         <div class="show-buttons">
-          <%= link_to "Book", "#", class: "btn btn-pink", style: "margin-top: 10px;" %>
-         <button class="btn btn-success btn-green" data-toggle="modal" data-target=".bs-example-modal-lg">More Pics</button>
+          <%= link_to "Book", "#", class: "btn-medium red", style: "margin-top: 10px;" %>
+         <button class="btn-medium" data-toggle="modal" data-target=".bs-example-modal-lg">More Pics</button>
         </div>
 
       </div>
@@ -100,7 +100,7 @@
                           end_date: Date.today.day + 90,
                           order: [:day, :month, :year] %>
       <div class="form-actions">
-        <%= f.submit "Request Booking", class: "btn btn-lg btn-danger" %>
+        <%= f.submit "Request Booking", class: "btn-medium red" %>
       </div>
       <% end %>
     </div>
