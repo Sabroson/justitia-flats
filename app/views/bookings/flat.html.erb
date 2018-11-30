@@ -29,16 +29,12 @@
             <small>Status: <span data-flat-status-id="<%= booking.id %>"><%= booking.status %></span></small>
           </div>
             <div class="booking-status" data-flat-id="<%= booking.id %>">
-          <% if booking.status == "pending" %>
-            <div class="row badge-row">
-            <%= link_to reject_booking_path(booking), method: 'patch', remote: true do %>
-              <span class="badge red-badge">REJECT</span>
-            <% end %>
-            <%= link_to approve_booking_path(booking), method: 'patch', remote: true do %>
-              <span class="badge green-badge">CONFIRM</span>
-            <% end %>
-            </div>
-          <% end %>
+              <% if booking.status == "pending" %>
+                <div class="confirm-buttons-row">
+                  <%= link_to 'Reject', reject_booking_path(booking), method: 'patch', remote: true, class: 'btn btn-sm btn-danger'%>
+                  <%= link_to 'Approve', approve_booking_path(booking), method: 'patch', remote: true, class: 'btn btn-sm btn-primary'%>
+                </div>
+              <% end %>
           </div>
         </div>
       </div>
